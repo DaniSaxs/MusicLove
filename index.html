@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="icon" type="image/x-icon" href="./img/logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<title>Find the REAL meaning of Music</title>
+</head>
+<body>
+
+    <div id="timerBox" class="position-fixed animate__animated d-none" style="top: 0; right: 0; z-index: 100000;">
+        <div class="bg-light px-4 py-2 m-3 d-flex justify-content-center align-items-center" style="border-radius: 50px; box-shadow: 0 0 10px 1px rgba(0,0,0,0.2);">
+            <p class="m-0 display-6" id="timer"><i class="fa fa-clock"></i> 00:00</p>
+        </div>
+    </div>
+
+    <nav class="navbar mb-4" style="background-color: var(--bs-purple);"  data-bs-theme="dark">
+        <div class="row w-100">
+            <div class="col-md-6 my-2 d-flex justify-content-center align-items-center">
+                <div class="container d-flex justify-content-start centerThings">
+                    <a class="navbar-brand d-flex justify-content-center align-items-center flex-row" href="/">
+                        <div class="logo-normal p-2">
+                            <img class="w-100" src="./img/logo.png" alt="logo">
+                        </div>
+                        <h1 class="display-6 text-white mx-2">Music Love</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 my-2 d-flex justify-content-center align-items-center">
+                <div class="container d-flex justify-content-end centerThings">
+                    <div class="input-group input-group-sm" style="width: 15rem;">
+                        <input type="password" class="form-control" placeholder="Write 4 Digits Code..." id="resetDataInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <button class="input-group-text btn btn-primary d-none" id="eraseFieldBtn" onclick="$('#resetDataInput').val(''); $('#resetDataInput').focus(); $(this).addClass('d-none')"><i class="fa fa-times"></i></button>
+                        <button class="input-group-text btn btn-danger" id="resetDataBtn" disabled><i class="fa fa-sync"></i> Reset Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center d-none" id="magicTextCont">
+        <button id="magicTextButton" class="btn btn-purple mb-4"><i class="fas fa-magic"></i> Presiona para ver la magia <i class="fas fa-magic"></i></button>
+    </div>
+
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mx-auto mb-4 bg-light p-4 d-flex justify-content-center flex-column" style="border-radius: 25px;">
+                    <h5 class="display-6 text-center" id="formQuestion"><i class='fa fa-music'></i> ¿Cómo se llama esta canción?</h5>
+
+                    <div class="w-100 d-flex justify-content-center my-4" id="currentMusic">
+                        
+                    </div>
+
+                    <form id="songsForm">
+                        <div class="form-group w-100" id="formOptions">
+                            
+                        </div>
+                        <hr class="hrMain">
+                        <button id="submitBtn" type="submit" class="btn btn-purple w-100"><i class="fa fa-chevron-right"></i> Enviar</button>
+                    </form>
+
+                    <hr class="hrMain">
+
+                    <div class="w-100">
+                        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width: 0%;">0%</div>
+                        </div>
+                    </div>
+
+                </div>
+    
+            </div>
+            <div class="col-md-6">
+                <div class="mx-auto p-4 d-flex justify-content-center flex-column" style="border-radius: 25px; background-color: #ffd6ea;">
+                    <h5 class="display-6 text-center"><i class='fa fa-list-ul'></i> Canciones Encontradas</h5>
+                    <hr>
+                    <div class="container">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Autor</th>
+                              </tr>
+                            </thead>
+                            <tbody id="songList">
+                              
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex justify-content-center flex-column align-items-center my-4 text-center" id="singleMagicText"></div>
+        <div class="container d-flex justify-content-center d-none" id="magicTextCont2">
+            <button id="magicTextButton2" class="btn btn-purple mb-4"><i class="fas fa-magic"></i> Presiona para continuar con la magia <i class="fas fa-magic"></i></button>
+        </div>
+        <div class="d-flex justify-content-center flex-column align-items-center my-4 text-center" id="singleMagicText2"></div>
+        <div class="container d-flex justify-content-center">
+            <div id="magicEndText"></div>
+        </div>    
+    </div>
+
+    <div class="container p-4 d-flex justify-content-center" id="cuteCats"></div>
+
+    <!-- <div id="showImage" class="d-flex justify-content-center flex-row flex-wrap p-4"></div> -->
+
+    <!-- Img Modal -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="w-100 overflow-hidden d-flex justify-content-center align-items-center" id="modalImgCont">
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="./scripts.js"></script>
+</body>
+</html>
