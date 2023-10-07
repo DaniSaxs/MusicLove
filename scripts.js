@@ -547,7 +547,7 @@ resetDataInput.addEventListener("keyup", () => {
         eraseFieldBtn.classList.add("d-none");
     }
 
-    if(resetDataInput.value == "4536"){
+    if(resetDataInput.value == "4596"){
         resetDataBtn.removeAttribute("disabled");
     }else{
         resetDataBtn.setAttribute("disabled", "true");
