@@ -12,6 +12,7 @@ let optionsNumber = 3;
 let totalSongs = data.musicData.length;
 
 var loadSongsFlag = false;
+var scanQRFlag = true;
 
 var allData = [{
     currentMusic : urlName ? urlName : 0,
@@ -429,7 +430,7 @@ function writeMagicEndText2()
         }
 
         magicEndText.innerHTML += `
-            <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: ${17.5 + (i / 5)}s;"><span class="firstMagicLetter mx-1 p-2">${data.musicData[i].name[0]}</span>${String(data.musicData[i].name).slice(1)} - ${data.musicData[i].autor}</p>
+            <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: ${17.5 + (i / 5)}s;"><span class="firstMagicLetter mx-1 p-2">${data.musicData[i].name[0]}</span>${String(data.musicData[i].name).slice(1)}</p>
         `;
     }
 
@@ -518,10 +519,6 @@ window.addEventListener("load", e => {
         }
     }
 
-    // $('.html5-qrcode-element').addClass("btn");
-    // $('#html5-qrcode-button-camera-permission, #html5-qrcode-button-camera-start').addClass("btn-purple");
-    // $('#html5-qrcode-button-camera-stop').addClass("btn-danger");
-    
     $('#html5-qrcode-button-camera-permission').html(`<i class="fa fa-camera"></i> Activar Cámara`);
 
     checkLoadSongs();
@@ -618,18 +615,25 @@ const isValidUrl = urlString =>{
 } 
 
 function onScanSuccess(qrCodeMessage) {
-   if (isValidUrl(qrCodeMessage)) {
+   if (isValidUrl(qrCodeMessage) && scanQRFlag) {
      location.href = qrCodeMessage;
+     scanQRFlag = false;
    }else
    {
     document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
    }
 }
+
 function onScanError(errorMessage) {
     // document.getElementById('result').innerHTML = "Ha ocurrido un error inesperado con el código QR";
 }
+
 var html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: false}
+    "reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: false, 
+        // videoConstraints: {
+        //     facingMode: { exact: "environment" }
+        // }
+    }
 );
 
 html5QrcodeScanner.render(onScanSuccess, onScanError);
@@ -642,3 +646,21 @@ setInterval(() => {
     $('#html5-qrcode-button-camera-start').html(`<i class="fa fa-play"></i> Empezar Escaneo`);
     $('#html5-qrcode-button-camera-stop').html(`<i class="fa fa-stop"></i> Detener Escaneo`);
 }, 60);
+
+
+// -------------------------Top Button--------------------------------
+
+var btn = $('#button');
+
+$(window).scroll(() => {
+  if ($(window).scrollTop() > 100) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.click((e) => {
+  e.preventDefault();
+  $("html, body").animate({scrollTop: 0}, 'fast', "swing");
+});

@@ -59,9 +59,9 @@
 }
 
 @media (max-width: 767px) {
-    #magicEndText p{
-        font-size:medium;
-    }
+    /* #magicEndText p{
+        font-size: 1.5em;
+    } */    
 
     .centerThings{
         justify-content: center !important;
@@ -75,3 +75,38 @@
 #reader{
     width: 100% !important;
 }
+
+/* ------------------Top Button-------------------------- */
+
+#button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+      opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+  
+  #button.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 600px) {
+    #button {
+        width: 30px;
+        height: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+  }
