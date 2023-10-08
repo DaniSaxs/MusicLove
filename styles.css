@@ -67,3 +67,11 @@
         justify-content: center !important;
     }
 }
+
+#reader img[alt="Info icon"], #html5-qrcode-anchor-scan-type-change{
+    display: none !important;
+}
+
+#reader{
+    width: 100% !important;
+}

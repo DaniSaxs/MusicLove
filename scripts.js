@@ -1,6 +1,5 @@
 import data from './data.json' assert { type: 'json' };
 import filenames from './img/filenames.json' assert { type: 'json' };
-// console.log(data.musicData);
 
 var url_string = window.location;
 var url = new URL(url_string);
@@ -44,7 +43,7 @@ var flag = true;
 
 if (localStorage.getItem("musicStatus") == null) 
 {
-    localStorage.setItem("musicStatus", JSON.stringify(allData))
+    localStorage.setItem("musicStatus", JSON.stringify(allData));
 }
 else
 {
@@ -62,8 +61,9 @@ else
 
 
 if (localStorage.getItem("timer") == null) {
-    localStorage.setItem("timer", JSON.stringify(allTime))
-}else
+    localStorage.setItem("timer", JSON.stringify(allTime));
+}
+else
 {
     allTime = JSON.parse(localStorage.getItem("timer"));
 }
@@ -518,6 +518,12 @@ window.addEventListener("load", e => {
         }
     }
 
+    // $('.html5-qrcode-element').addClass("btn");
+    // $('#html5-qrcode-button-camera-permission, #html5-qrcode-button-camera-start').addClass("btn-purple");
+    // $('#html5-qrcode-button-camera-stop').addClass("btn-danger");
+    
+    $('#html5-qrcode-button-camera-permission').html(`<i class="fa fa-camera"></i> Activar Cámara`);
+
     checkLoadSongs();
     progressDataFunction();
     timerFunction();
@@ -536,6 +542,7 @@ window.addEventListener("load", e => {
 // };
 
 var resetDataInput = document.getElementById("resetDataInput");
+var importDataBtn = document.getElementById("importDataBtn");
 var resetDataBtn = document.getElementById("resetDataBtn");
 var eraseFieldBtn = document.getElementById("eraseFieldBtn");
 
@@ -549,8 +556,10 @@ resetDataInput.addEventListener("keyup", () => {
 
     if(resetDataInput.value == "4596"){
         resetDataBtn.removeAttribute("disabled");
+        importDataBtn.removeAttribute("disabled");
     }else{
         resetDataBtn.setAttribute("disabled", "true");
+        importDataBtn.setAttribute("disabled", "true");
     }
 });
 
@@ -570,3 +579,66 @@ resetDataBtn.addEventListener("click", () => {
         }
     })
 });
+
+importDataBtn.addEventListener("click", () => {
+    fetch("./LOVE_DATA_TEMPLATE.txt").then(function(response) {
+        return response
+    }).then(function(data) {
+        return data.text()
+    }).then(function(Normal) {
+    
+        localStorage.setItem("musicStatus", String(Normal));
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Datos Importados Correctamente',
+            showConfirmButton: false,
+            timer: 1000
+        }).then(() => {
+            location.reload();
+        });
+    
+    }).catch(function(err) {
+        console.log('Fetch problem show: ' + err.message);
+    });
+});
+
+// --------------------QR-------------------------------
+
+const isValidUrl = urlString =>{
+    var inputElement = document.createElement('input');
+    inputElement.type = 'url';
+    inputElement.value = urlString;
+
+    if (!inputElement.checkValidity()) {
+        return false;
+    } else {
+        return true;
+    }
+} 
+
+function onScanSuccess(qrCodeMessage) {
+   if (isValidUrl(qrCodeMessage)) {
+     location.href = qrCodeMessage;
+   }else
+   {
+    document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
+   }
+}
+function onScanError(errorMessage) {
+    // document.getElementById('result').innerHTML = "Ha ocurrido un error inesperado con el código QR";
+}
+var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: false}
+);
+
+html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+setInterval(() => {
+    $('.html5-qrcode-element').addClass("btn");
+    $('#html5-qrcode-button-camera-permission, #html5-qrcode-button-camera-start').addClass("btn-purple");
+    $('#html5-qrcode-button-camera-stop').addClass("btn-danger");
+
+    $('#html5-qrcode-button-camera-start').html(`<i class="fa fa-play"></i> Empezar Escaneo`);
+    $('#html5-qrcode-button-camera-stop').html(`<i class="fa fa-stop"></i> Detener Escaneo`);
+}, 60);

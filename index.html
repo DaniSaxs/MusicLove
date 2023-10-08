@@ -35,9 +35,10 @@
             </div>
             <div class="col-md-6 my-2 d-flex justify-content-center align-items-center">
                 <div class="container d-flex justify-content-end centerThings">
-                    <div class="input-group input-group-sm" style="width: 15rem;">
+                    <div class="input-group input-group-sm" style="width: 18rem;">
                         <input type="password" class="form-control" placeholder="Write 4 Digits Code..." id="resetDataInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                        <button class="input-group-text btn btn-primary d-none" id="eraseFieldBtn" onclick="$('#resetDataInput').val(''); $('#resetDataInput').focus(); $(this).addClass('d-none')"><i class="fa fa-times"></i></button>
+                        <button class="input-group-text btn btn-primary d-none" id="eraseFieldBtn" onclick="$('#resetDataInput').val(''); $('#resetDataInput').focus(); $(this).addClass('d-none'); $('#importDataBtn, #resetDataBtn').attr('disabled','true');"><i class="fa fa-times"></i></button>
+                        <button class="input-group-text btn btn-success" id="importDataBtn" disabled><i class="fa fa-download"></i></button>
                         <button class="input-group-text btn btn-danger" id="resetDataBtn" disabled><i class="fa fa-sync"></i> Reset Data</button>
                     </div>
                 </div>
@@ -52,6 +53,15 @@
     <div class="container mb-4">
         <div class="row">
             <div class="col-md-6">
+
+                <div class="w-100 bg-light d-flex justify-content-center align-items-center p-4 mb-4" style="border-radius: 25px;">
+                    <div class="container d-flex justify-content-center align-items-center flex-column">
+                        <h5 class="display-6 text-center mb-3"><i class='fa fa-qrcode'></i> Escanear Código QR</h5>
+                        <div style="width:500px;" id="reader"></div>
+                        <div id="result" class="text-danger mt-3 mb-0"></div>
+                    </div>
+                </div>
+
                 <div class="mx-auto mb-4 bg-light p-4 d-flex justify-content-center flex-column" style="border-radius: 25px;">
                     <h5 class="display-6 text-center" id="formQuestion"><i class='fa fa-music'></i> ¿Cómo se llama esta canción?</h5>
 
@@ -138,6 +148,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/notie"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./html5-qrcode/html5-qrcode.min.js"></script>
 <script type="module" src="./scripts.js"></script>
 </body>
 </html>
