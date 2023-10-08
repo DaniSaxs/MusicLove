@@ -193,14 +193,14 @@ async function sendForm(event)
     else if(name != allData[0].currentMusic)
     {
         initTimerByError();
-        notie.alert({ type: 3, text: 'Respuesta Incorrecta!', time: 1});
+        notie.alert({ type: 3, text: '<i class="fas fa-times"></i> Respuesta Incorrecta!', time: 1});
         allData[0].incorrectAnswer++;
         localStorage.setItem("musicStatus", JSON.stringify(allData));
     }
     else if(allData[0].totalFinded >= totalSongs)
     {
         initTimerByError();
-        notie.alert({ type: 3, text: 'Inválido!', time: 1});
+        notie.alert({ type: 3, text: '<i class="fas fa-times"></i> Inválido!', time: 1});
         allData[0].incorrectAnswer++;
         localStorage.setItem("musicStatus", JSON.stringify(allData));
     }
@@ -630,7 +630,8 @@ function onScanSuccess(qrCodeMessage) {
       }
     }else
     {
-     document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
+    notie.alert({ type: 3, text: '<i class="fas fa-qrcode"></i> El código QR escaneado es Inválido!', time: 2});
+    //  document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
     }
  }
  
