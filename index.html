@@ -15,6 +15,8 @@
 </head>
 <body>
 
+    <!-- <small class="position-fixed" style="left: 30px; bottom: 30px; z-index: 1000;">V2</small> -->
+
     <button id="button" class="btn btn-purple"><i class="fas fa-chevron-up"></i></button>
 
     <div id="timerBox" class="position-fixed animate__animated d-none" style="top: 0; right: 0; z-index: 100000;">
@@ -38,7 +40,7 @@
             <div class="col-md-6 my-2 d-flex justify-content-center align-items-center">
                 <div class="container d-flex justify-content-end centerThings">
                     <div class="input-group input-group-sm" style="width: 18rem;">
-                        <input type="password" class="form-control" placeholder="Write 4 Digits Code..." id="resetDataInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <input type="password" class="form-control" placeholder="Escribe el Código..." id="resetDataInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                         <button class="input-group-text btn btn-primary d-none" id="eraseFieldBtn" onclick="$('#resetDataInput').val(''); $('#resetDataInput').focus(); $(this).addClass('d-none'); $('#importDataBtn, #resetDataBtn').attr('disabled','true');"><i class="fa fa-times"></i></button>
                         <button class="input-group-text btn btn-success" id="importDataBtn" disabled><i class="fa fa-download"></i></button>
                         <button class="input-group-text btn btn-danger" id="resetDataBtn" disabled><i class="fa fa-sync"></i> Reset Data</button>
