@@ -614,29 +614,39 @@ const isValidUrl = urlString =>{
     }
 } 
 
-function onScanSuccess(qrCodeMessage) {
-   if (isValidUrl(qrCodeMessage) && scanQRFlag) {
-     location.href = qrCodeMessage;
-     scanQRFlag = false;
-   }else
-   {
-    document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
-   }
-}
-
-function onScanError(errorMessage) {
-    // document.getElementById('result').innerHTML = "Ha ocurrido un error inesperado con el código QR";
-}
-
 var html5QrcodeScanner = new Html5QrcodeScanner(
     "reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: false, 
         videoConstraints: {
-            facingMode: { exact: "environment" }
+            facingMode: "environment"
         }
     }
 );
 
+function onScanSuccess(qrCodeMessage) {
+    if (isValidUrl(qrCodeMessage) && scanQRFlag) {
+      location.href = qrCodeMessage;
+      scanQRFlag = false;
+    }else
+    {
+     document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
+    }
+ }
+ 
+ function onScanError(errorMessage) {
+     // document.getElementById('result').innerHTML = "Ha ocurrido un error inesperado con el código QR";
+ }
+
 html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+// // This method will trigger user permissions
+// Html5Qrcode.getCameras().then(devices => {
+//     if (devices && devices.length) {
+//         var cameraId = devices;
+//         console.log(cameraId);
+//     }
+// }).catch(err => {
+// // handle err
+// });
 
 setInterval(() => {
     $('.html5-qrcode-element').addClass("btn");
