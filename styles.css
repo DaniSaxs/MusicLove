@@ -59,12 +59,19 @@
 }
 
 @media (max-width: 767px) {
-    /* #magicEndText p{
-        font-size: 1.5em;
-    } */    
+    #magicEndText p{
+        font-size: calc(1rem + 1.5vw) !important;
+    }    
 
     .centerThings{
         justify-content: center !important;
+    }
+
+    #button {
+        width: 30px !important;
+        height: 30px !important;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -100,13 +107,4 @@
   #button.show {
     opacity: 1;
     visibility: visible;
-  }
-
-  @media (max-width: 600px) {
-    #button {
-        width: 30px;
-        height: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
   }

@@ -623,9 +623,11 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
 );
 
 function onScanSuccess(qrCodeMessage) {
-    if (isValidUrl(qrCodeMessage) && scanQRFlag) {
-      location.href = qrCodeMessage;
-      scanQRFlag = false;
+    if (isValidUrl(qrCodeMessage)) {
+      if (scanQRFlag) {
+        location.href = qrCodeMessage;
+        scanQRFlag = false;
+      }
     }else
     {
      document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
