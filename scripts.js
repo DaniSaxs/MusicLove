@@ -630,8 +630,25 @@ function onScanSuccess(qrCodeMessage) {
       }
     }else
     {
-    notie.alert({ type: 3, text: '<i class="fas fa-qrcode"></i> El código QR escaneado es Inválido!', time: 2});
-    //  document.getElementById('result').innerHTML = "El código QR escaneado es Inválido";
+        // notie.alert({ type: 3, text: '<i class="fas fa-qrcode"></i> Alerta!, Hay una novedad con tu QR', time: 2});
+
+        var qrArray = qrCodeMessage.split(" ");
+
+        var findQr = qrArray.find(e => e == "bolos");
+
+        if (findQr == undefined || findQr == null) {
+            document.getElementById('result').innerHTML = `
+            <div class="alert alert-danger text-center w-100" role="alert">
+                <h2><i class="fa fa-qrcode"></i> El código QR es Inválido!</h2><br>
+                <p><b>Resultado:</b> ${qrCodeMessage}</p>
+            </div>`;
+        }else{
+            document.getElementById('result').innerHTML = `
+            <div class="alert alert-info text-center w-100" role="alert">
+                <i class="fa fa-bowling-ball mb-3" style="font-size:3em"></i><br>
+                <p class="display-6">${qrCodeMessage}! UwU</p>
+            </div>`;
+        }
     }
  }
  
@@ -677,3 +694,15 @@ btn.click((e) => {
   e.preventDefault();
   $("html, body").animate({scrollTop: 0}, 'fast', "swing");
 });
+
+// var str = "Debes jugar una buena partida de bolos para poder continuar";
+
+// var strArray = str.split(" ");
+
+// var findStr = strArray.find(e => e == "bolos");
+
+// if (findStr == undefined || findStr == null) {
+//     console.log("none");
+// }else{
+//     console.log(findStr);
+// }
