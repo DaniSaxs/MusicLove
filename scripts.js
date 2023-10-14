@@ -37,6 +37,8 @@ const cuteCats = document.getElementById("cuteCats");
 const singleMagicText = document.getElementById("singleMagicText");
 const singleMagicText2 = document.getElementById("singleMagicText2");
 
+const totalSongsNumber = document.getElementById("totalSongsNumber");
+
 var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
@@ -231,6 +233,8 @@ function loadFoundedSongs()
             <td>${findOldSong[j].autor}</td>
         </tr>`;
     };
+
+    totalSongsNumber.innerHTML = `<strong>${findOldSong.length}</strong> Canción(es) Encontrada(s)`;
 
 }
 
