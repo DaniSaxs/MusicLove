@@ -361,7 +361,11 @@ function writeMagicEndText()
         <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 1.5s">La magia ocurre con tan solo una mirada...</p>
         <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 3s">Recapitulemos un poco...</p>
         <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 4.5s">Vamos a mirar nuestra historia...</p>
-        <div id="showImage" class="animate__animated animate__fadeInDown d-flex justify-content-center flex-row flex-wrap p-4" style="animation-delay: 6s"></div>
+        <div id="showImage" class="animate__animated animate__fadeInDown d-flex justify-content-center flex-row flex-wrap p-4" style="animation-delay: 5s">
+            <div class="spinner-border text-purple" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
     `;
 
     setTimeout(function(){
@@ -453,6 +457,8 @@ function showImages()
 {
 
     const showImage = document.getElementById("showImage");
+
+    showImage.innerHTML = "";
 
     for (let i = 0; i < filenames.children.length; i++) {
         showImage.innerHTML += `
