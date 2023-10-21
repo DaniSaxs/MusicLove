@@ -415,10 +415,12 @@ function writeMagicEndText2()
         </div>
         <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 7.5s">Así como esta es la primera canción que me cantaste...</p>
         <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 9s">También es la primera pista de lo que va a pasar...</p>
-        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 10.5s">¿Estás preparada?...</p>
-        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 12s">La magia está en leer todo para abajo...</p>
-        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 13.5s">Pero tranquila...</p>
-        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 15s">Lo haré por ti, y en orden...</p>
+        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 10.5s">Encontrar todas estas canciones tenía un significado...</p>
+        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 12s">Cada inicial esconde su magia...</p>
+        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 13.5s">¿Estás preparada?...</p>
+        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 15s">La magia está en leer todo para abajo...</p>
+        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 16.5s">Pero tranquila...</p>
+        <p class="display-6 animate__animated animate__fadeInDown" style="animation-delay: 18s">Lo haré por ti, y en orden...</p>
     `;
 
     setTimeout(function(){
@@ -426,7 +428,7 @@ function writeMagicEndText2()
     }, 6000);
 
     magicEndText.innerHTML = `
-        <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: 17.5s;"><span class="firstMagicLetter mx-1 p-2">¿</span></p>
+        <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: 19.5s;"><span class="firstMagicLetter mx-1 p-2">¿</span></p>
     `;
 
     for (let i = 0; i < data.musicData.length; i++) {
@@ -438,16 +440,16 @@ function writeMagicEndText2()
         }
 
         magicEndText.innerHTML += `
-            <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: ${17.5 + (i / 5)}s;"><span class="firstMagicLetter mx-1 p-2">${data.musicData[i].name[0]}</span>${String(data.musicData[i].name).slice(1)}</p>
+            <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: ${19.5 + (i / 5)}s;"><span class="firstMagicLetter mx-1 p-2">${data.musicData[i].name[0]}</span>${String(data.musicData[i].name).slice(1)}</p>
         `;
     }
 
     magicEndText.innerHTML += `
-        <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: 19s;"><span class="firstMagicLetter mx-1 p-2">?</span></p>
+        <p class="my-5 display-6 animate__animated animate__bounceIn" style="animation-delay: 21s;"><span class="firstMagicLetter mx-1 p-2">?</span></p>
     `;
 
     cuteCats.innerHTML = `
-        <img src="./img/cute-cat.gif" class="animate__animated animate__bounceIn" style="animation-delay: 20.5s;width: 18rem;">
+        <img src="./img/cute-cat.gif" class="animate__animated animate__bounceIn" style="animation-delay: 22.5s;width: 18rem;">
     `;
 }
 
