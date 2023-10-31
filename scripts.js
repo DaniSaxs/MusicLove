@@ -234,7 +234,7 @@ function loadFoundedSongs()
         </tr>`;
     };
 
-    totalSongsNumber.innerHTML = `<strong>${findOldSong.length}</strong> Canción(es) Encontrada(s)`;
+    totalSongsNumber.innerHTML = `<strong>${findOldSong.length}/${totalSongs}</strong> Canción(es) Encontrada(s)`;
 
 }
 
