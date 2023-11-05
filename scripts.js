@@ -507,7 +507,7 @@ function scrollToBottom(){
 }
 
 function scrollToBottom2(){
-    $("html, body").animate({scrollTop: $("#singleMagicText2").offset().top}, 1000, "swing");
+    $("html, body").animate({scrollTop: $("#singleMagicText2").offset().top - 100}, 1000, "swing");
 }
 
 document.getElementById("magicTextButton").addEventListener("click", e => {
